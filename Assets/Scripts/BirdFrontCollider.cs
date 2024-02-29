@@ -10,12 +10,13 @@ public class BirdFrontCollider : MonoBehaviour
 
 	private void Start()
 	{
-		bm = GameObject.Find("BirdManager").GetComponent<BirdManager2>();
-	}
+        //bm = GameObject.Find("BirdManager").GetComponent<BirdManager2>();
+        bm = FindObjectOfType<BirdManager2>();
+    }
 
-	private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.tag.Equals("Block") && once)
+		if (other.gameObject.tag.Equals("Block") || other.gameObject.tag.Equals("BottomKiller") && once)
 		{
 			if (bm.IsPowerActive())
 			{
@@ -29,7 +30,8 @@ public class BirdFrontCollider : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag.Equals("Block") && once)
+
+		if (other.gameObject.tag.Equals("Block")|| other.gameObject.tag.Equals("BottomKiller")  && once)
 		{
 			if (bm.IsPowerActive())
 			{

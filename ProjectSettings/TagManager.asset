@@ -12,6 +12,7 @@ TagManager:
   - TopBlock
   - Perfect
   - Star
+  - BottomKiller
   layers:
   - Default
   - TransparentFX
