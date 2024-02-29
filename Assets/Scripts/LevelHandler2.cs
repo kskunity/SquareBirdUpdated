@@ -46,6 +46,8 @@ public class LevelHandler2 : MonoBehaviour
 
     public Color[] botcolor;
     [Space]
+    public int m_test_no;
+    [Space]
     public List<GameObject> m_newland_objects;
 
 
@@ -69,7 +71,12 @@ public class LevelHandler2 : MonoBehaviour
         Debug.Log(PlayerPrefs.GetString("squarebird_levelcodex"));
 
         prevlevelno = int.Parse(levelcodes[0]);
-        if (levelno <= 10)
+
+        if (levelno <= 5)
+        {
+            landcount = 5;
+        }
+        else if (levelno <= 10)
         {
             landcount = 10;
         }
@@ -164,7 +171,8 @@ public class LevelHandler2 : MonoBehaviour
 
     private GameObject _GetLandObject(int m_index)
     {
-        return m_newland_objects[0];
+        Debug.Log(m_index);
+        return m_newland_objects[m_index];
         //return lands[m_index];
     }
 
@@ -172,10 +180,13 @@ public class LevelHandler2 : MonoBehaviour
     {
         int min = 0;
         int max = lands.Count;
+
+
+
         if (levelno >= 1 && levelno <= 5)
         {
             min = 0;
-            max = 3;
+            max = 2;
         }
         if (levelno >= 6 && levelno <= 20)
         {
@@ -188,9 +199,9 @@ public class LevelHandler2 : MonoBehaviour
             max = lands.Count;
         }
         int index = Random.Range(min, max);
+        //int m_a = Random.Range(0, m_newland_objects.Count);
         levelcode = levelcode + "," + index;
-
-        return m_newland_objects[0];
+        return m_newland_objects[index];
         //return lands[index];
     }
 
@@ -208,12 +219,18 @@ public class LevelHandler2 : MonoBehaviour
         startpoint = new Vector3(6f, land.transform.position.y, land.transform.position.z);
         for (int i = 0; i < m_land_count_test; i++)
         {
-            GameObject gameObject = Object.Instantiate(GetNextLand2(), startpoint, Quaternion.identity);
+            GameObject gameObject = Object.Instantiate(_NewGameNext(), startpoint, Quaternion.identity);
             startpoint.x += gameObject.GetComponent<LandBehaviour2>().landwidth;
             land = gameObject;
             m_genratedObjects.Add(gameObject);
         }
         m_genratedObjects.Add(Object.Instantiate(home, startpoint, Quaternion.identity));
+    }
+
+    private GameObject _NewGameNext()
+    {
+        return m_newland_objects[m_test_no];
+        //return lands[index];
     }
 
     public void _DestroyLevelNow()
@@ -226,5 +243,5 @@ public class LevelHandler2 : MonoBehaviour
 
 
 #endif
-#endregion
+    #endregion
 }
