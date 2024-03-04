@@ -159,6 +159,8 @@ public class BirdBehaviour : MonoBehaviour
 		}
 		if (other.gameObject.tag.Equals("Perfect") && !bm.IsPowerActive())
 		{
+			Debug.Log("Prefect colision here");
+
 			perfectcount++;
 			if (perfectcount == 1)
 			{

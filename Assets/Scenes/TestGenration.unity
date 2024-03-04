@@ -16699,10 +16699,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8fc271392accaa44bb9a4d40d20df9d5, type: 3}
   - {fileID: 21300000, guid: 8bff55e7a0c447c4aa9faaa2729dee0f, type: 3}
   - {fileID: 21300000, guid: 8955c206090a3a74b8b7b5b56a84e9e3, type: 3}
+  m_coinsdesc_text: []
+  charunlockcode: []
+  char_pricing: 
+  notifymenu: {fileID: 0}
+  newbird: {fileID: 0}
   msgbox: {fileID: 13}
   musicoff: {fileID: 115}
   vibrateoff: {fileID: 106}
   charmenu: {fileID: 107}
+  m_cointext: {fileID: 0}
 --- !u!114 &485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17421,10 +17427,15 @@ MonoBehaviour:
   startbtn: {fileID: 3}
   guideimg: {fileID: 62}
   deadsound: {fileID: 8300000, guid: 4b15ad932c951a94ab41404306675469, type: 3}
+  m_retry_button: {fileID: 0}
   guideimgs:
   - {fileID: 21300000, guid: 5f7fdf168b76c164396fda863f5276fc, type: 3}
   - {fileID: 21300000, guid: b3ab150b0ea6ee74eadfa4dd7e77d808, type: 3}
   - {fileID: 21300000, guid: 60eda7fad339b2e46b3a6364067b6dff, type: 3}
+  m_highscore_panel: {fileID: 0}
+  m_highscore_objects: []
+  m_scores:
+    m_scores: []
 --- !u!114 &510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20008,12 +20019,37 @@ MonoBehaviour:
   - {r: 0, g: 0.5019608, b: 1, a: 0.5019608}
   m_test_no: 2
   m_newland_objects:
-  - {fileID: 2457548551505346857, guid: 90487788efed06a47bc4f6335e07da27, type: 3}
-  - {fileID: 2457548551505346857, guid: 90487788efed06a47bc4f6335e07da27, type: 3}
-  - {fileID: 2457548551505346857, guid: 90487788efed06a47bc4f6335e07da27, type: 3}
-  - {fileID: 2457548551505346857, guid: 90487788efed06a47bc4f6335e07da27, type: 3}
-  - {fileID: 2457548551505346857, guid: 90487788efed06a47bc4f6335e07da27, type: 3}
-  - {fileID: 2457548551505346857, guid: 90487788efed06a47bc4f6335e07da27, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
+  m_test: 0
   m_genratedObjects:
   - {fileID: 0}
   - {fileID: 0}
@@ -21470,6 +21506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5a33ceeaeccc92409b40daf39d18485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_top: 0
 --- !u!50 &829457457
 Rigidbody2D:
   serializedVersion: 4
