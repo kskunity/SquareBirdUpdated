@@ -1,3 +1,4 @@
+using Boo.Lang;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,6 +32,7 @@ public class UIHandlerHome : MonoBehaviour
     public GameObject charmenu;
     [Space]
     public Text m_cointext;
+
 
 
     private int m_currunt_ch_no;
@@ -69,6 +71,7 @@ public class UIHandlerHome : MonoBehaviour
             PlayerPrefs.SetInt("squarebird_coin", 0);
         }
     }
+
 
     private void Start()
     {
@@ -237,8 +240,8 @@ public class UIHandlerHome : MonoBehaviour
             }
             else
             {
-                charbtn[j].GetComponent<Image>().sprite = charunlockimg[j];
-                //charbtn[j].GetComponent<Image>().sprite = charlockimg[j];
+                //charbtn[j].GetComponent<Image>().sprite = charunlockimg[j];
+                charbtn[j].GetComponent<Image>().sprite = charlockimg[j];
             }
         }
     }

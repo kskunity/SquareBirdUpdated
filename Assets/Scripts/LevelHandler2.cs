@@ -53,7 +53,7 @@ public class LevelHandler2 : MonoBehaviour
     public List<GameObject> m_newland_objects;
     [Space]
     public bool m_test;
-
+    private int m_score;
 
     public static LevelHandler2 instance;
 
@@ -320,26 +320,24 @@ public class LevelHandler2 : MonoBehaviour
 
     public async void _DoStarAnimation(int m_count, Vector3 m_pos)
     {
-        for (int i = 0; i < m_count; i++)
-        {
-            Object.Instantiate(Star, m_pos, Quaternion.identity).GetComponent<StarBehaviour>().MoveStar();
-            await _Waiter(100);
-        }
-
-
+        Object.Instantiate(Star, m_pos, Quaternion.identity).GetComponent<StarBehaviour>().MoveStar();
+        await _Waiter(100);
+        m_score = PlayerPrefs.GetInt("squarebird_coin");
+        m_score++;
+        PlayerPrefs.SetInt("squarebird_coin",m_score);
     }
-
     private async Task _Waiter(int m_mil)
     {
         await Task.Delay(m_mil);
     }
-
 
     #region Genrate Level
 #if UNITY_EDITOR
     public List<GameObject> m_genratedObjects;
     [Space]
     public int m_land_count_test;
+ 
+
     public void _GenrateLevelNow()
     {
         _DestroyLevelNow();

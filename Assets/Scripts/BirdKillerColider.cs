@@ -10,27 +10,34 @@ public class BirdKillerColider : MonoBehaviour
 
 
     private Camera m_cam;
+    private Vector3 bottomLeft;
+    private Vector3 topRight;
 
     void Start()
     {
-        m_cam= Camera.main;
-        Vector3 bottomLeft = m_cam.ScreenToWorldPoint(Vector2.zero);
-        Vector3 topRight = m_cam.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        m_cam = Camera.main;
+        _Reset();
+    }
+
+    public void _Reset()
+    {
+        bottomLeft = m_cam.ScreenToWorldPoint(Vector2.zero);
+        topRight = m_cam.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
         if (m_top)
         {
-            transform.DOMoveY(topRight.y+0.5f, 0f);
+            transform.localPosition = new Vector3(0f,topRight.y + 0.5f);
+            //transform.DOMoveY(topRight.y + 0.5f, 0f);
         }
         else
         {
-            transform.DOMoveY(bottomLeft.y-0.5f, 0f);
+            transform.localPosition = new Vector3(0f, bottomLeft.y - 0.5f);
+            //transform.DOMoveY(bottomLeft.y - 0.5f, 0f);
 
         }
 
         Debug.Log(bottomLeft);
         Debug.Log(topRight);
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D other)

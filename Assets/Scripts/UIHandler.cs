@@ -62,7 +62,11 @@ public class UIHandler : MonoBehaviour
 	public List<GameObject> m_highscore_objects;
 	[Space]
 	public _HScore m_scores;
-	public static UIHandler instance;
+    [Space]
+    public List<BirdKillerColider> m_birdkillers;
+    public static UIHandler instance;
+
+	private int m_frame;
 
     private void Start()
 	{
@@ -118,6 +122,30 @@ public class UIHandler : MonoBehaviour
         Debug.Log(PlayerPrefs.GetString("highscore"));
 
 	}
+
+	void Update()
+	{
+		m_frame++;
+		if (m_frame >= 15)
+		{
+			_ResetKillers();
+			m_frame= 0;
+		}
+
+    }
+
+    public void _ResetKillers()
+	{
+		foreach (var item in m_birdkillers)
+		{
+			item._Reset();
+		}
+	}
+
+    public void _AddStar()
+	{
+        startxt.text = PlayerPrefs.GetInt("squarebird_coin").ToString();
+    }
 
 	public void _OpenHighscore()
 	{

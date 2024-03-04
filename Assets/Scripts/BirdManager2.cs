@@ -1,3 +1,4 @@
+using DG.Tweening;
 using MK.Glow;
 using UnityEngine;
 
@@ -53,14 +54,19 @@ public class BirdManager2 : MonoBehaviour
 
     private GameObject m_enadpoit;
 
+    private Camera m_main_cam;
+
+    private bool m_cam_sizing;
+
     private void Start()
     {
+        m_main_cam=Camera.main;
         selectedbird = PlayerPrefs.GetInt("squarebird_selectedchar");
         topbird = Object.Instantiate(bird[selectedbird], new Vector3(base.transform.position.x, 0.5f, 0f), Quaternion.identity);
         topbird.transform.SetParent(base.transform);
         bb = topbird.GetComponent<BirdBehaviour>();
         topbird.GetComponent<TrailRenderer>().enabled = true;
-        uihandler = GameObject.Find("UIHandler").GetComponent<UIHandler>();
+        uihandler = FindObjectOfType<UIHandler>();
         ass = GetComponent<AudioSource>();
         ismusic = PlayerPrefs.GetInt("squarebird_ismusic");
         t1 = Time.time;
@@ -133,15 +139,35 @@ public class BirdManager2 : MonoBehaviour
                 t1 = Time.time;
                 uihandler.SetScore();
             }
-            if (!ispowerup)
+            if (!ispowerup && m_main_cam.orthographicSize!=9f)
             {
-                Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 9f, Time.deltaTime * 5f);
+
+                if (!m_cam_sizing)
+                {
+                    m_cam_sizing = true;
+                    m_main_cam.DOOrthoSize(9f, 1f).OnComplete(() =>
+                    {
+                        m_cam_sizing = false;
+                    });
+                }
+
+                //m_main_cam.orthographicSize = Mathf.Lerp(m_main_cam.orthographicSize, 9f, Time.deltaTime * 5f);
             }
             else
             {
                 cutoff += 0.1f * Time.deltaTime;
                 powerslider.GetComponent<SpriteRenderer>().material.SetFloat("_Cutoff", cutoff);
-                Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, 10f, Time.deltaTime * 5f);
+
+                if (!m_cam_sizing && m_main_cam.orthographicSize !=10f)
+                {
+                    m_cam_sizing = true;
+                    m_main_cam.DOOrthoSize(10f, 1f).OnComplete(() =>
+                    {               
+                        m_cam_sizing = false;
+                    });
+                }
+
+                //m_main_cam.orthographicSize = Mathf.Lerp(m_main_cam.orthographicSize, 10f, Time.deltaTime * 5f);
                 if (cutoff >= 0.7f && ispowerup)
                 {
                     speed = 4.5f;
@@ -163,6 +189,7 @@ public class BirdManager2 : MonoBehaviour
             }
         }
     }
+
 
     public void SetBlastBonusScore()
     {
@@ -187,13 +214,14 @@ public class BirdManager2 : MonoBehaviour
         }
     }
 
-    public void Perfect1()
+    public void Perfect1(float m_speed)
     {
         LevelHandler2.instance._DoStarAnimation(1, transform.position);
-        speed = 4.2f;
+        speed=m_speed;
+        //speed = 4.2f;
         GameObject gameObject = Object.Instantiate(bonustxt);
         gameObject.transform.SetParent(base.transform);
-        gameObject.GetComponent<TextMesh>().text = "Perfect x1";
+        gameObject.GetComponent<TextMesh>().text = "Perfect";
         Haptic();
     }
 
@@ -203,7 +231,7 @@ public class BirdManager2 : MonoBehaviour
         speed = 4.5f;
         GameObject gameObject = Object.Instantiate(bonustxt);
         gameObject.transform.SetParent(base.transform);
-        gameObject.GetComponent<TextMesh>().text = "Perfect x2";
+        gameObject.GetComponent<TextMesh>().text = "Perfect";
         Haptic();
     }
 
@@ -213,7 +241,7 @@ public class BirdManager2 : MonoBehaviour
         speed = 4.7f;
         GameObject gameObject = Object.Instantiate(bonustxt);
         gameObject.transform.SetParent(base.transform);
-        gameObject.GetComponent<TextMesh>().text = "Perfect x3";
+        gameObject.GetComponent<TextMesh>().text = "Perfect";
         Haptic();
     }
 
@@ -223,7 +251,7 @@ public class BirdManager2 : MonoBehaviour
         speed = 5f;
         GameObject gameObject = Object.Instantiate(bonustxt);
         gameObject.transform.SetParent(base.transform);
-        gameObject.GetComponent<TextMesh>().text = "Perfect x4";
+        gameObject.GetComponent<TextMesh>().text = "Perfect";
         Haptic();
     }
 
