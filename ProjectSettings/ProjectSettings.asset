@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Triangle Games
-  productName: Square Bird
+  productName: SQUARE BIRD
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -273,7 +273,14 @@ PlayerSettings:
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
   resolutionDialogBanner: {fileID: 0}
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: 8502ae8978f67134d9ef9a4cb774da99, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
@@ -614,7 +621,19 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: DOTWEEN
+    4: DOTWEEN
+    7: DOTWEEN
+    13: DOTWEEN
+    14: DOTWEEN
+    19: DOTWEEN
+    21: DOTWEEN
+    25: DOTWEEN
+    26: DOTWEEN
+    27: DOTWEEN
+    28: DOTWEEN
+    29: DOTWEEN
   platformArchitecture: {}
   scriptingBackend:
     Android: 1

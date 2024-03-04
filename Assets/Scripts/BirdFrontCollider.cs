@@ -4,7 +4,8 @@ public class BirdFrontCollider : MonoBehaviour
 {
 	public GameObject bird;
 
-	private bool once = true;
+	[HideInInspector]
+	public bool once = true;
 
 	private BirdManager2 bm;
 

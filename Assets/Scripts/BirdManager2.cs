@@ -250,10 +250,10 @@ public class BirdManager2 : MonoBehaviour
 		powerslider.transform.GetChild(2).gameObject.SetActive(true);
 		GameObject.Find("Main Camera").GetComponent<MKGlowFree>().enabled = true;
 		powerslider.transform.localScale = new Vector3(1.4f, 1.4f, 1f);
-		if (PlayerPrefs.GetInt("squarebird_isvibrate") == 0)
-		{
-			Handheld.Vibrate();
-		}
+		//if (PlayerPrefs.GetInt("squarebird_isvibrate") == 0)
+		//{
+		//	Handheld.Vibrate();
+		//}
 	}
 
 	public void DeActivePowerUpMode()

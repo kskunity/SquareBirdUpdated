@@ -13707,9 +13707,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8534177468019923355}
   - component: {fileID: 8398389380361534038}
+  - component: {fileID: 8617364229167894501}
   m_Layer: 0
   m_Name: Block (6)
-  m_TagString: BottomBlock
+  m_TagString: BottomKiller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13777,6 +13778,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &8617364229167894501
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537085889504188382}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 9, y: 6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9, y: 6}
+  m_EdgeRadius: 0
 --- !u!1 &8537120386899398311
 GameObject:
   m_ObjectHideFlags: 0

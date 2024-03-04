@@ -1,167 +1,226 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIHandlerHome : MonoBehaviour
 {
-	public GameObject[] charbtn;
+    public GameObject[] charbtn;
 
-	public Sprite[] charlockimg;
+    public Sprite[] charlockimg;
 
-	public Sprite[] charunlockimg;
+    public Sprite[] charunlockimg;
+    [Space]
+    public GameObject[] m_coinsdesc_text;
+    //public GameObject[] m_selectbutton;
 
-	private string[] charunlockcode;
+    public string[] charunlockcode;
+    [Space]
+    public int[] char_pricing;
+    [Space]
+    public GameObject notifymenu;
+    public Image newbird;
+    [Space]
 
-	public GameObject msgbox;
+    public GameObject msgbox;
 
-	public GameObject musicoff;
+    public GameObject musicoff;
 
-	public GameObject vibrateoff;
+    public GameObject vibrateoff;
 
-	public GameObject charmenu;
+    public GameObject charmenu;
+    [Space]
+    public Text m_cointext;
 
-	private void Awake()
-	{
-		if (!PlayerPrefs.HasKey("squarebird_best"))
-		{
-			PlayerPrefs.SetInt("squarebird_best", 0);
-		}
-		if (!PlayerPrefs.HasKey("squarebird_selectedchar"))
-		{
-			PlayerPrefs.SetInt("squarebird_selectedchar", 0);
-		}
-		if (!PlayerPrefs.HasKey("squarebird_tmpscore"))
-		{
-			PlayerPrefs.SetInt("squarebird_tmpscore", 0);
-		}
-		if (!PlayerPrefs.HasKey("squarebird_charunlock"))
-		{
-			PlayerPrefs.SetString("squarebird_charunlock", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
-		}
-		if (!PlayerPrefs.HasKey("squarebird_notify"))
-		{
-			PlayerPrefs.SetInt("squarebird_notify", 0);
-		}
-		if (!PlayerPrefs.HasKey("squarebird_ismusic"))
-		{
-			PlayerPrefs.SetInt("squarebird_ismusic", 0);
-		}
-		if (!PlayerPrefs.HasKey("squarebird_isvibrate"))
-		{
-			PlayerPrefs.SetInt("squarebird_isvibrate", 0);
-		}
-		if (!PlayerPrefs.HasKey("squarebird_coin"))
-		{
-			PlayerPrefs.SetInt("squarebird_coin", 0);
-		}
-	}
 
-	private void Start()
-	{
-		msgbox.SetActive(false);
-		if (PlayerPrefs.GetInt("squarebird_notify") == 1)
-		{
-			msgbox.SetActive(true);
-			PlayerPrefs.SetInt("squarebird_notify", 0);
-		}
-		else
-		{
-			msgbox.SetActive(false);
-		}
-		musicoff.SetActive(false);
-		if (PlayerPrefs.GetInt("squarebird_ismusic") == 0)
-		{
-			musicoff.SetActive(false);
-		}
-		else
-		{
-			musicoff.SetActive(true);
-		}
-		vibrateoff.SetActive(false);
-		if (PlayerPrefs.GetInt("squarebird_isvibrate") == 0)
-		{
-			vibrateoff.SetActive(false);
-		}
-		else
-		{
-			vibrateoff.SetActive(true);
-		}
-		charunlockcode = PlayerPrefs.GetString("squarebird_charunlock").Split(',');
-		UnlockCharacter();
-	}
+    private int m_currunt_ch_no;
+    private void Awake()
+    {
+        if (!PlayerPrefs.HasKey("squarebird_best"))
+        {
+            PlayerPrefs.SetInt("squarebird_best", 0);
+        }
+        if (!PlayerPrefs.HasKey("squarebird_selectedchar"))
+        {
+            PlayerPrefs.SetInt("squarebird_selectedchar", 0);
+        }
+        if (!PlayerPrefs.HasKey("squarebird_tmpscore"))
+        {
+            PlayerPrefs.SetInt("squarebird_tmpscore", 0);
+        }
+        if (!PlayerPrefs.HasKey("squarebird_charunlock"))
+        {
+            PlayerPrefs.SetString("squarebird_charunlock", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
+        }
+        if (!PlayerPrefs.HasKey("squarebird_notify"))
+        {
+            PlayerPrefs.SetInt("squarebird_notify", 0);
+        }
+        if (!PlayerPrefs.HasKey("squarebird_ismusic"))
+        {
+            PlayerPrefs.SetInt("squarebird_ismusic", 0);
+        }
+        if (!PlayerPrefs.HasKey("squarebird_isvibrate"))
+        {
+            PlayerPrefs.SetInt("squarebird_isvibrate", 0);
+        }
+        if (!PlayerPrefs.HasKey("squarebird_coin"))
+        {
+            PlayerPrefs.SetInt("squarebird_coin", 0);
+        }
+    }
 
-	public void SetMusic()
-	{
-		if (PlayerPrefs.GetInt("squarebird_ismusic") == 0)
-		{
-			PlayerPrefs.SetInt("squarebird_ismusic", 1);
-			musicoff.SetActive(true);
-		}
-		else
-		{
-			PlayerPrefs.SetInt("squarebird_ismusic", 0);
-			musicoff.SetActive(false);
-		}
-		GameObject.Find("BirdManager").GetComponent<BirdManager2>().UpdateMusicSetting();
-	}
+    private void Start()
+    {
+        msgbox.SetActive(false);
+        if (PlayerPrefs.GetInt("squarebird_notify") == 1)
+        {
+            msgbox.SetActive(true);
+            PlayerPrefs.SetInt("squarebird_notify", 0);
+        }
+        else
+        {
+            msgbox.SetActive(false);
+        }
+        musicoff.SetActive(false);
+        if (PlayerPrefs.GetInt("squarebird_ismusic") == 0)
+        {
+            musicoff.SetActive(false);
+        }
+        else
+        {
+            musicoff.SetActive(true);
+        }
+        vibrateoff.SetActive(false);
+        if (PlayerPrefs.GetInt("squarebird_isvibrate") == 0)
+        {
+            vibrateoff.SetActive(false);
+        }
+        else
+        {
+            vibrateoff.SetActive(true);
+        }
+        charunlockcode = PlayerPrefs.GetString("squarebird_charunlock").Split(',');
+        //UnlockCharacter();
+    }
 
-	public void SetVibrate()
-	{
-		if (PlayerPrefs.GetInt("squarebird_isvibrate") == 0)
-		{
-			PlayerPrefs.SetInt("squarebird_isvibrate", 1);
-			vibrateoff.SetActive(true);
-		}
-		else
-		{
-			PlayerPrefs.SetInt("squarebird_isvibrate", 0);
-			vibrateoff.SetActive(false);
-		}
-	}
 
-	public void UnlockCharacter()
-	{
-		if (charbtn.Length > charunlockcode.Length)
-		{
-			int num = charbtn.Length - charunlockcode.Length;
-			string text = string.Empty;
-			for (int i = 0; i < num; i++)
-			{
-				text += ",0";
-			}
-			PlayerPrefs.SetString("squarebird_charunlock", PlayerPrefs.GetString("squarebird_charunlock") + text);
-			charunlockcode = PlayerPrefs.GetString("squarebird_charunlock").Split(',');
-		}
-		for (int j = 0; j < charbtn.Length; j++)
-		{
-			if (int.Parse(charunlockcode[j]) == 1)
-			{
-				charbtn[j].GetComponent<Button>().enabled = true;
-				charbtn[j].GetComponent<Image>().sprite = charunlockimg[j];
-			}
-			else
-			{
-				charbtn[j].GetComponent<Button>().enabled = false;
-				charbtn[j].GetComponent<Image>().sprite = charlockimg[j];
-			}
-		}
-	}
+#if UNITY_EDITOR
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            PlayerPrefs.SetInt("squarebird_coin", 1000);
+            m_cointext.text = PlayerPrefs.GetInt("squarebird_coin").ToString("00");
+        }
+    }
 
-	public void SelectCharacter(int charid)
-	{
-		PlayerPrefs.SetInt("squarebird_selectedchar", charid);
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	}
+#endif
 
-	public void HideCharMenu()
-	{
-		charmenu.SetActive(false);
-	}
+    public void SetMusic()
+    {
+        if (PlayerPrefs.GetInt("squarebird_ismusic") == 0)
+        {
+            PlayerPrefs.SetInt("squarebird_ismusic", 1);
+            musicoff.SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("squarebird_ismusic", 0);
+            musicoff.SetActive(false);
+        }
+        GameObject.Find("BirdManager").GetComponent<BirdManager2>().UpdateMusicSetting();
+    }
 
-	public void ShowCharMenu()
-	{
-		charunlockcode = PlayerPrefs.GetString("squarebird_charunlock").Split(',');
-		UnlockCharacter();
-		charmenu.SetActive(true);
-	}
+    public void SetVibrate()
+    {
+        if (PlayerPrefs.GetInt("squarebird_isvibrate") == 0)
+        {
+            PlayerPrefs.SetInt("squarebird_isvibrate", 1);
+            vibrateoff.SetActive(true);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("squarebird_isvibrate", 0);
+            vibrateoff.SetActive(false);
+        }
+    }
+
+    public void _BuyProcess(int m_no)
+    {
+        m_currunt_ch_no = m_no;
+        notifymenu.SetActive(true);
+        newbird.sprite = charunlockimg[m_no];
+    }
+
+    public void _Buy()
+    {
+        charunlockcode[m_currunt_ch_no] = "1";
+        string text = string.Empty;
+        for (int k = 0; k < charunlockcode.Length; k++)
+        {
+            text = text + "," + charunlockcode[k];
+        }
+        text = text.Substring(1, text.Length - 1);
+        PlayerPrefs.SetString("squarebird_charunlock", text);
+        charunlockcode = PlayerPrefs.GetString("squarebird_charunlock").Split(',');
+        _CloseSelectPanel();
+        PlayerPrefs.SetInt("squarebird_selectedchar", m_currunt_ch_no + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void _CloseSelectPanel()
+    {
+        notifymenu.SetActive(false);
+    }
+
+    public void SelectCharacter(int charid)
+    {
+        m_currunt_ch_no = charid - 1;
+        Debug.Log(m_currunt_ch_no);
+        Debug.Log(charunlockcode[m_currunt_ch_no]);
+
+        if (charunlockcode[m_currunt_ch_no].Equals("0"))
+        {
+            Debug.Log("Returned");
+            _BuyProcess(m_currunt_ch_no);
+            return;
+        }
+        PlayerPrefs.SetInt("squarebird_selectedchar", charid);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void HideCharMenu()
+    {
+        charmenu.SetActive(false);
+    }
+
+    public void ShowCharMenu()
+    {
+        charunlockcode = PlayerPrefs.GetString("squarebird_charunlock").Split(',');
+
+
+        m_cointext.text = PlayerPrefs.GetInt("squarebird_coin").ToString("00");
+        //UnlockCharacter();
+        _UnlockBoughtCh();
+        charmenu.SetActive(true);
+    }
+
+
+    public void _UnlockBoughtCh()
+    {
+        for (int j = 0; j < charbtn.Length; j++)
+        {
+            if (int.Parse(charunlockcode[j]) == 1)
+            {
+                charbtn[j].GetComponent<Image>().sprite = charunlockimg[j];
+                m_coinsdesc_text[j].SetActive(false);
+            }
+            else
+            {
+                charbtn[j].GetComponent<Image>().sprite = charunlockimg[j];
+                //charbtn[j].GetComponent<Image>().sprite = charlockimg[j];
+            }
+        }
+    }
 }

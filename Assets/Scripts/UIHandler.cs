@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
  
@@ -25,6 +27,7 @@ public class UIHandler : MonoBehaviour
 
 	public Text startxt;
 
+
 	public Slider slider;
 
 	public GameObject reloadmenu;
@@ -40,6 +43,8 @@ public class UIHandler : MonoBehaviour
 	public GameObject guideimg;
 
 	public AudioClip deadsound;
+	[Space]
+	public RectTransform m_retry_button;
 
 	private int bonus = 10;
 
@@ -48,9 +53,22 @@ public class UIHandler : MonoBehaviour
 	private AudioSource ass;
 
 	public Sprite[] guideimgs;
+	[Space]
+	public GameObject m_highscore_panel;
+	[Space]
+	public List<GameObject> m_highscore_objects;
+	[Space]
+	public _HScore m_scores;
+	public static UIHandler instance;
 
-	private void Start()
+    private void Start()
 	{
+
+		if(instance == null)
+		{
+			instance = this;
+		}
+
 		if (PlayerPrefs.GetInt("squarebird_tmpscore") == 0)
 		{
 			scoretxt.text = "0";
@@ -68,7 +86,7 @@ public class UIHandler : MonoBehaviour
 		if (@int <= 1)
 		{
 			guideind = 0;
-			guide.SetActive(true);
+			//guide.SetActive(true);
 		}
 		else
 		{
@@ -78,11 +96,64 @@ public class UIHandler : MonoBehaviour
 		bonus = (@int - num) / 10 * 5 + 10;
 		startbtn.SetActive(true);
 		slider.gameObject.SetActive(false);
+
+
+		if (!PlayerPrefs.HasKey("highscore"))
+		{
+			string s = JsonUtility.ToJson(m_scores);
+			PlayerPrefs.SetString("highscore", s);
+		}
+		else
+		{
+			Debug.Log("Filled");
+			string s = PlayerPrefs.GetString("highscore");
+			m_scores = JsonUtility.FromJson<_HScore>(s);
+            PlayerPrefs.SetString("highscore", s);
+        }
+
+        m_scores.m_scores.Sort((a, b) => b.CompareTo(a));
+
+        Debug.Log(PlayerPrefs.GetString("highscore"));
+
 	}
 
-	private void Update()
+	public void _OpenHighscore()
 	{
+		m_highscore_panel.SetActive(true);
+
+        int m_a=1;
+
+		foreach (var item in m_scores.m_scores)
+		{
+			m_highscore_objects[m_a-1].GetComponentInChildren<Text>().text=item.ToString();
+			m_a++;
+        }
 	}
+
+	public void _CloseHighscore()
+	{
+        m_highscore_panel.SetActive(false);
+    }
+
+	public void _SaveHighScore()
+	{
+        m_scores.m_scores.Sort((a, b) => b.CompareTo(a));
+
+        float num = float.Parse(scoretxt.text);
+
+
+		if(m_scores.m_scores.Contains(num))
+		{
+			return;
+		}
+
+		Debug.Log(num);
+		m_scores.m_scores.Add(num);
+        m_scores.m_scores.Sort((a, b) => b.CompareTo(a));
+        m_scores.m_scores.RemoveAt(4);
+        string s = JsonUtility.ToJson(m_scores);
+        PlayerPrefs.SetString("highscore", s);
+    }
 
 	public void StartGame()
 	{
@@ -194,6 +265,8 @@ public class UIHandler : MonoBehaviour
 	{
 		slider.gameObject.SetActive(false);
 		reloadmenu.SetActive(true);
+		m_retry_button.DOAnchorPosY(280f, 1f);
+        _SaveHighScore();
 	}
 
 	public void ReloadGame()
@@ -201,10 +274,19 @@ public class UIHandler : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
+	public void _OpenInstruction()
+	{
+        guideind=0;
+        Image component = guideimg.GetComponent<Image>();
+        component.sprite = guideimgs[guideind];
+        component.SetNativeSize();
+        guide.SetActive(true);
+    }
+
 	public void ShowInstruction()
 	{
 		guideind++;
-		if (guideind == 3)
+		if (guideind == 2)
 		{
 			guideind = 0;
 			guide.SetActive(false);
@@ -216,4 +298,10 @@ public class UIHandler : MonoBehaviour
 			component.SetNativeSize();
 		}
 	}
+}
+
+[System.Serializable]
+public class _HScore
+{
+	public List<float> m_scores;
 }

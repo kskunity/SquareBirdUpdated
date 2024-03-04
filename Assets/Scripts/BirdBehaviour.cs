@@ -29,8 +29,11 @@ public class BirdBehaviour : MonoBehaviour
 
 	public LineRenderer laser;
 
-	private void Start()
+	public static BirdBehaviour instance;
+
+    private void Start()
 	{
+		instance = this;
 		body = GetComponent<Rigidbody2D>();
 		//bm = GameObject.Find("BirdManager").GetComponent<BirdManager2>();
 		bm = FindObjectOfType<BirdManager2>();	
@@ -118,10 +121,10 @@ public class BirdBehaviour : MonoBehaviour
 			body.AddForceAtPosition((Vector2.left + Vector2.up) * 2f, base.transform.position, ForceMode2D.Impulse);
 			base.transform.position -= new Vector3(0.25f, 0f, 0f);
 			GetComponent<SpriteRenderer>().sprite = birdidleframe[3];
-			if (PlayerPrefs.GetInt("squarebird_isvibrate") == 0)
-			{
-				Handheld.Vibrate();
-			}
+			//if (PlayerPrefs.GetInt("squarebird_isvibrate") == 0)
+			//{
+			//	Handheld.Vibrate();
+			//}
 			GameObject.Find("UIHandler").GetComponent<UIHandler>().ShowReloadMenu();
 			laser.gameObject.SetActive(false);
 		}
@@ -180,11 +183,16 @@ public class BirdBehaviour : MonoBehaviour
 			else if (perfectcount == 5)
 			{
 				Debug.Log("Disabled Powerslider here");
-				return;
+				//perfectcount = 0;
+                return;
 				other.gameObject.SetActive(false);
-				perfectcount = 0;
 				bm.ActivePowerUpMode();
 			}
 		}
 	}
+
+	public void _ResetPrefect()
+	{
+        perfectcount = 0;
+    }
 }
