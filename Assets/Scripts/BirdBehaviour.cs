@@ -12,6 +12,7 @@ public class BirdBehaviour : MonoBehaviour
 	private RaycastHit2D righthit;
 
 	public bool isdead;
+	public bool m_won;
 
 	public bool istouchtop;
 

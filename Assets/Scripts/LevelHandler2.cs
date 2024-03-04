@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class LevelHandler2 : MonoBehaviour
     private GameObject land;
 
     public GameObject home;
+    public GameObject Star;
 
     public GameObject spoint;
 
@@ -53,8 +55,14 @@ public class LevelHandler2 : MonoBehaviour
     public bool m_test;
 
 
+    public static LevelHandler2 instance;
+
+
     private void Awake()
     {
+
+        instance= this;
+
         if (!PlayerPrefs.HasKey("squarebird_levelno"))
         {
             PlayerPrefs.SetInt("squarebird_levelno", 1);
@@ -67,6 +75,9 @@ public class LevelHandler2 : MonoBehaviour
 
     private void Start()
     {
+
+        Application.targetFrameRate = 30;
+
         levelno = PlayerPrefs.GetInt("squarebird_levelno");
         levelcodes = PlayerPrefs.GetString("squarebird_levelcodex").Split(';');
 
@@ -267,7 +278,7 @@ public class LevelHandler2 : MonoBehaviour
             min = 15;
             max = 35;
         }
-        else if (levelno <=100)
+        else if (levelno <= 100)
         {
             min = 20;
             max = 35;
@@ -307,6 +318,23 @@ public class LevelHandler2 : MonoBehaviour
         //return lands[index];
     }
 
+    public async void _DoStarAnimation(int m_count, Vector3 m_pos)
+    {
+        for (int i = 0; i < m_count; i++)
+        {
+            Object.Instantiate(Star, m_pos, Quaternion.identity).GetComponent<StarBehaviour>().MoveStar();
+            await _Waiter(100);
+        }
+
+
+    }
+
+    private async Task _Waiter(int m_mil)
+    {
+        await Task.Delay(m_mil);
+    }
+
+
     #region Genrate Level
 #if UNITY_EDITOR
     public List<GameObject> m_genratedObjects;
@@ -342,6 +370,8 @@ public class LevelHandler2 : MonoBehaviour
             DestroyImmediate(item);
         }
     }
+
+
 
 
 #endif

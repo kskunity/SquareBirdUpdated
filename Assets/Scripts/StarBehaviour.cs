@@ -10,8 +10,14 @@ public class StarBehaviour : MonoBehaviour
 
 	private void Start()
 	{
-		uihandler = GameObject.Find("UIHandler").GetComponent<UIHandler>();
-	}
+		if (startarget == null)
+		{
+			startarget=UIHandler.instance.startarget;
+
+        }
+		uihandler = UIHandler.instance;
+
+    }
 
 	private void Update()
 	{

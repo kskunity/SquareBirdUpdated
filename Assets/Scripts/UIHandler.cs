@@ -41,12 +41,15 @@ public class UIHandler : MonoBehaviour
 	public GameObject startbtn;
 
 	public GameObject guideimg;
+	[Space]
+	public GameObject m_first_inst;
 
 	public AudioClip deadsound;
 	[Space]
 	public RectTransform m_retry_button;
-
-	private int bonus = 10;
+	[Space]
+    public Transform startarget;
+    private int bonus = 10;
 
 	private int guideind;
 
@@ -63,7 +66,6 @@ public class UIHandler : MonoBehaviour
 
     private void Start()
 	{
-
 		if(instance == null)
 		{
 			instance = this;
@@ -276,16 +278,19 @@ public class UIHandler : MonoBehaviour
 
 	public void _OpenInstruction()
 	{
-        guideind=0;
-        Image component = guideimg.GetComponent<Image>();
-        component.sprite = guideimgs[guideind];
-        component.SetNativeSize();
+        guideind=-1;
         guide.SetActive(true);
+		m_first_inst.SetActive(true);
+        guideimg.SetActive(false);
+        //Image component = guideimg.GetComponent<Image>();
+        //component.sprite = guideimgs[guideind];
+        //component.SetNativeSize();
     }
 
 	public void ShowInstruction()
 	{
 		guideind++;
+		Debug.Log(guideind);
 		if (guideind == 2)
 		{
 			guideind = 0;
@@ -293,7 +298,9 @@ public class UIHandler : MonoBehaviour
 		}
 		else
 		{
-			Image component = guideimg.GetComponent<Image>();
+            guideimg.SetActive(true);
+            m_first_inst.SetActive(false);
+            Image component = guideimg.GetComponent<Image>();
 			component.sprite = guideimgs[guideind];
 			component.SetNativeSize();
 		}

@@ -146,6 +146,38 @@ public class UIHandlerHome : MonoBehaviour
         }
     }
 
+
+    public void _CloseSelectPanel()
+    {
+        notifymenu.SetActive(false);
+    }
+
+    public void SelectCharacter(int charid)
+    {
+        m_currunt_ch_no = charid - 1;
+        Debug.Log(m_currunt_ch_no);
+        Debug.Log(charunlockcode[m_currunt_ch_no]);
+
+        int score = PlayerPrefs.GetInt("squarebird_coin");
+        string m_s = charunlockcode[m_currunt_ch_no];
+
+        switch (m_s)
+        {
+            case "0":
+                if (score >= char_pricing[m_currunt_ch_no])
+                {
+                    Debug.Log("_BuyProcess");
+                    _BuyProcess(m_currunt_ch_no);
+                }
+                break;
+            case "1":
+                PlayerPrefs.SetInt("squarebird_selectedchar", charid);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                break;
+        }
+    }
+
+
     public void _BuyProcess(int m_no)
     {
         m_currunt_ch_no = m_no;
@@ -161,32 +193,19 @@ public class UIHandlerHome : MonoBehaviour
         {
             text = text + "," + charunlockcode[k];
         }
+
+        int score = PlayerPrefs.GetInt("squarebird_coin");
+        score = score- char_pricing[m_currunt_ch_no];
+        PlayerPrefs.SetInt("squarebird_coin", score);
+
+        m_cointext.text = PlayerPrefs.GetInt("squarebird_coin").ToString("00");
+
+
         text = text.Substring(1, text.Length - 1);
         PlayerPrefs.SetString("squarebird_charunlock", text);
         charunlockcode = PlayerPrefs.GetString("squarebird_charunlock").Split(',');
         _CloseSelectPanel();
         PlayerPrefs.SetInt("squarebird_selectedchar", m_currunt_ch_no + 1);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void _CloseSelectPanel()
-    {
-        notifymenu.SetActive(false);
-    }
-
-    public void SelectCharacter(int charid)
-    {
-        m_currunt_ch_no = charid - 1;
-        Debug.Log(m_currunt_ch_no);
-        Debug.Log(charunlockcode[m_currunt_ch_no]);
-
-        if (charunlockcode[m_currunt_ch_no].Equals("0"))
-        {
-            Debug.Log("Returned");
-            _BuyProcess(m_currunt_ch_no);
-            return;
-        }
-        PlayerPrefs.SetInt("squarebird_selectedchar", charid);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
