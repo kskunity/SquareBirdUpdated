@@ -17,30 +17,70 @@ public class BirdFrontCollider : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.tag.Equals("Block") || other.gameObject.tag.Equals("BottomKiller") && once)
+		if (once)
 		{
-			if (bm.IsPowerActive())
-			{
-				other.gameObject.GetComponent<BlockBehaviour>().BlastBlock();
-				return;
-			}
-			bird.GetComponent<BirdBehaviour>().BirdDead();
-			once = false;
-		}
+            switch (other.gameObject.tag)
+            {
+                case "Block":
+					_MakeDead();
+                    break;
+                case "BottomKiller":
+					_MakeDead();
+                    break;
+                case "TopBlock":
+                    _MakeDead();
+                    break;
+            }
+        }
+
+		//if (other.gameObject.tag.Equals("Block") || other.gameObject.tag.Equals("BottomKiller")&& once)
+		//{
+		//	if (bm.IsPowerActive())
+		//	{
+		//		other.gameObject.GetComponent<BlockBehaviour>().BlastBlock();
+		//		return;
+		//	}
+		//	bird.GetComponent<BirdBehaviour>().BirdDead();
+		//	once = false;
+		//}
 	}
+
+	void _MakeDead()
+	{
+        bird.GetComponent<BirdBehaviour>().BirdDead();
+        once = false;
+    }
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 
-		if (other.gameObject.tag.Equals("Block")|| other.gameObject.tag.Equals("BottomKiller")  && once)
-		{
-			if (bm.IsPowerActive())
-			{
-				other.gameObject.GetComponent<BlockBehaviour>().BlastBlock();
-				return;
-			}
-			bird.GetComponent<BirdBehaviour>().BirdDead();
-			once = false;
-		}
+
+        if (once)
+        {
+            switch (other.gameObject.tag)
+            {
+                case "Block":
+                    _MakeDead();
+                    break;
+                case "BottomKiller":
+                    _MakeDead();
+                    break;
+                case "TopBlock":
+                    _MakeDead();
+                    break;
+            }
+        }
+
+
+  //      if (other.gameObject.tag.Equals("Block")|| other.gameObject.tag.Equals("BottomKiller")  && once)
+		//{
+		//	if (bm.IsPowerActive())
+		//	{
+		//		other.gameObject.GetComponent<BlockBehaviour>().BlastBlock();
+		//		return;
+		//	}
+		//	bird.GetComponent<BirdBehaviour>().BirdDead();
+		//	once = false;
+		//}
 	}
 }

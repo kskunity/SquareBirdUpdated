@@ -36,8 +36,8 @@ public class BirdKillerColider : MonoBehaviour
 
         }
 
-        Debug.Log(bottomLeft);
-        Debug.Log(topRight);
+        //Debug.Log(bottomLeft);
+        //Debug.Log(topRight);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

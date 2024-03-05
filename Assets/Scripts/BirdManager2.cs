@@ -60,7 +60,14 @@ public class BirdManager2 : MonoBehaviour
 
     private void Start()
     {
-        m_main_cam=Camera.main;
+
+#if UNITY_EDITOR
+        Debug.unityLogger.logEnabled = true;
+#else
+ Debug.unityLogger.logEnabled = false;
+#endif
+
+        m_main_cam = Camera.main;
         selectedbird = PlayerPrefs.GetInt("squarebird_selectedchar");
         topbird = Object.Instantiate(bird[selectedbird], new Vector3(base.transform.position.x, 0.5f, 0f), Quaternion.identity);
         topbird.transform.SetParent(base.transform);
@@ -139,35 +146,34 @@ public class BirdManager2 : MonoBehaviour
                 t1 = Time.time;
                 uihandler.SetScore();
             }
-            if (!ispowerup && m_main_cam.orthographicSize!=9f)
+            if (!ispowerup)
             {
 
-                if (!m_cam_sizing)
-                {
-                    m_cam_sizing = true;
-                    m_main_cam.DOOrthoSize(9f, 1f).OnComplete(() =>
-                    {
-                        m_cam_sizing = false;
-                    });
-                }
-
-                //m_main_cam.orthographicSize = Mathf.Lerp(m_main_cam.orthographicSize, 9f, Time.deltaTime * 5f);
+                //if (!m_cam_sizing)
+                //{
+                //    m_cam_sizing = true;
+                //    m_main_cam.DOOrthoSize(9f, 1f).OnComplete(() =>
+                //    {
+                //        m_cam_sizing = false;
+                //    });
+                //}
+                m_main_cam.orthographicSize = Mathf.Lerp(m_main_cam.orthographicSize, 9f, Time.deltaTime * 5f);
             }
             else
             {
                 cutoff += 0.1f * Time.deltaTime;
                 powerslider.GetComponent<SpriteRenderer>().material.SetFloat("_Cutoff", cutoff);
 
-                if (!m_cam_sizing && m_main_cam.orthographicSize !=10f)
-                {
-                    m_cam_sizing = true;
-                    m_main_cam.DOOrthoSize(10f, 1f).OnComplete(() =>
-                    {               
-                        m_cam_sizing = false;
-                    });
-                }
+                //if (!m_cam_sizing && m_main_cam.orthographicSize !=10f)
+                //{
+                //    m_cam_sizing = true;
+                //    m_main_cam.DOOrthoSize(10f, 1f).OnComplete(() =>
+                //    {               
+                //        m_cam_sizing = false;
+                //    });
+                //}
 
-                //m_main_cam.orthographicSize = Mathf.Lerp(m_main_cam.orthographicSize, 10f, Time.deltaTime * 5f);
+                m_main_cam.orthographicSize = Mathf.Lerp(m_main_cam.orthographicSize, 10f, Time.deltaTime * 5f);
                 if (cutoff >= 0.7f && ispowerup)
                 {
                     speed = 4.5f;
@@ -217,7 +223,7 @@ public class BirdManager2 : MonoBehaviour
     public void Perfect1(float m_speed)
     {
         LevelHandler2.instance._DoStarAnimation(1, transform.position);
-        speed=m_speed;
+        speed = m_speed;
         //speed = 4.2f;
         GameObject gameObject = Object.Instantiate(bonustxt);
         gameObject.transform.SetParent(base.transform);
@@ -247,7 +253,7 @@ public class BirdManager2 : MonoBehaviour
 
     public void Perfect4()
     {
-        LevelHandler2.instance._DoStarAnimation(4,transform.position);
+        LevelHandler2.instance._DoStarAnimation(4, transform.position);
         speed = 5f;
         GameObject gameObject = Object.Instantiate(bonustxt);
         gameObject.transform.SetParent(base.transform);

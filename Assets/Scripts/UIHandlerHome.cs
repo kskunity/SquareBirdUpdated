@@ -158,6 +158,12 @@ public class UIHandlerHome : MonoBehaviour
     public void SelectCharacter(int charid)
     {
         m_currunt_ch_no = charid - 1;
+        if (m_currunt_ch_no < 0)
+        {
+            PlayerPrefs.SetInt("squarebird_selectedchar", charid);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            return;
+        }
         Debug.Log(m_currunt_ch_no);
         Debug.Log(charunlockcode[m_currunt_ch_no]);
 
