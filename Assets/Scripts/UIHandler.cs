@@ -68,6 +68,8 @@ public class UIHandler : MonoBehaviour
 	public GameObject m_pause_panel;
 	[Space]
 	public Text m_text;
+	[Space]
+	public Button m_paush_button;
     public static UIHandler instance;
 
 	private int m_frame;
@@ -132,7 +134,8 @@ public class UIHandler : MonoBehaviour
 
 	public void _Paush()
 	{
-		BirdManager2 m_bm=FindObjectOfType<BirdManager2>();
+		m_paush_button.interactable = false;
+        BirdManager2 m_bm=FindObjectOfType<BirdManager2>();
         m_bm.m_paused = true;
 
         m_pause_panel.SetActive(true);
@@ -159,6 +162,7 @@ public class UIHandler : MonoBehaviour
         BirdManager2 m_bm = FindObjectOfType<BirdManager2>();
         m_bm.m_paused = false;
         Time.timeScale = 1;
+        m_paush_button.interactable = true;
     }
 
 	public void _Home()

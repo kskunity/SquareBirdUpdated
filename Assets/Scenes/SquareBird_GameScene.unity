@@ -17463,6 +17463,7 @@ MonoBehaviour:
   - {fileID: 2109858134}
   m_pause_panel: {fileID: 249668549}
   m_text: {fileID: 5631022}
+  m_paush_button: {fileID: 887186707}
 --- !u!114 &510
 MonoBehaviour:
   m_ObjectHideFlags: 0
