@@ -123,6 +123,16 @@ public class UIHandler : MonoBehaviour
 
 	}
 
+	public void _Paush()
+	{
+		Time.timeScale = 1;
+	}
+
+	public void _PlayUnpush()
+	{
+        Time.timeScale = 0;
+    }
+
 	void Update()
 	{
 		m_frame++;
