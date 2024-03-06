@@ -186,6 +186,15 @@ public class UIHandlerHome : MonoBehaviour
         }
     }
 
+    public void _Quite()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+    Application.Quit();
+#endif
+    }
+
 
     public void _BuyProcess(int m_no)
     {
@@ -204,7 +213,7 @@ public class UIHandlerHome : MonoBehaviour
         }
 
         int score = PlayerPrefs.GetInt("squarebird_coin");
-        score = score- char_pricing[m_currunt_ch_no];
+        score = score - char_pricing[m_currunt_ch_no];
         PlayerPrefs.SetInt("squarebird_coin", score);
 
         m_cointext.text = PlayerPrefs.GetInt("squarebird_coin").ToString("00");

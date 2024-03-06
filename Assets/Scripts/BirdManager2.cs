@@ -1,6 +1,9 @@
+
 using DG.Tweening;
 using MK.Glow;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BirdManager2 : MonoBehaviour
 {
@@ -58,6 +61,13 @@ public class BirdManager2 : MonoBehaviour
 
     private bool m_cam_sizing;
 
+    List<RaycastResult> m_result;
+    private Vector3 position;
+    private Vector3 position2;
+
+    [Space]
+    public bool m_paused;
+
     private void Start()
     {
 
@@ -114,10 +124,19 @@ public class BirdManager2 : MonoBehaviour
             {
                 isrun = true;
             }
-            if (Input.GetMouseButtonUp(0) && isrun && !bb.istouchtop)
+            if (Input.GetMouseButtonUp(0) && isrun && !bb.istouchtop && !m_paused)
             {
-                Vector3 position = topbird.transform.position;
-                Vector3 position2 = position;
+                m_result = new List<RaycastResult>();
+                m_result = GetEventSystemRaycastResults();
+
+                if (m_result.Count>0)
+                {
+                    return;
+                }
+
+              
+                position = topbird.transform.position;
+                position2 = position;
                 position.y += 0.75f;
                 topbird.transform.position = position;
                 GameObject gameObject = Object.Instantiate(egg[selectedbird], position2, Quaternion.identity);
@@ -196,6 +215,32 @@ public class BirdManager2 : MonoBehaviour
         }
     }
 
+
+    ///Returns 'true' if we touched or hovering on Unity UI element.
+    public  bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+    {
+        for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+        {
+            RaycastResult curRaysastResult = eventSystemRaysastResults[index];
+
+            if (curRaysastResult.gameObject.layer == LayerMask.NameToLayer("UI"))
+                return true;
+        }
+
+        return false;
+    }
+
+    ///Gets all event systen raycast results of current mouse or touch position.
+    private List<RaycastResult> GetEventSystemRaycastResults()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+
+        List<RaycastResult> raysastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raysastResults);
+
+        return raysastResults;
+    }
 
     public void SetBlastBonusScore()
     {

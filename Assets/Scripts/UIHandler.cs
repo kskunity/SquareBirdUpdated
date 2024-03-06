@@ -64,12 +64,19 @@ public class UIHandler : MonoBehaviour
 	public _HScore m_scores;
     [Space]
     public List<BirdKillerColider> m_birdkillers;
+	[Space]
+	public GameObject m_pause_panel;
+	[Space]
+	public Text m_text;
     public static UIHandler instance;
 
 	private int m_frame;
 
     private void Start()
 	{
+
+		Time.timeScale = 1;
+
 		if(instance == null)
 		{
 			instance = this;
@@ -125,13 +132,40 @@ public class UIHandler : MonoBehaviour
 
 	public void _Paush()
 	{
-		Time.timeScale = 1;
+		BirdManager2 m_bm=FindObjectOfType<BirdManager2>();
+        m_bm.m_paused = true;
+
+        m_pause_panel.SetActive(true);
+        Time.timeScale = 0;
 	}
 
 	public void _PlayUnpush()
 	{
-        Time.timeScale = 0;
+		m_pause_panel.SetActive(false);
+		StartCoroutine(_CountDown());
+
     }
+
+	IEnumerator _CountDown()
+	{
+		m_text.gameObject.SetActive(true);
+		m_text.text = "3";
+        yield return new WaitForSecondsRealtime(1f);
+		m_text.text = "2";
+		yield return new WaitForSecondsRealtime(1f);
+		m_text.text = "1";
+		yield return new WaitForSecondsRealtime(1f);
+		m_text.gameObject.SetActive(false);
+        BirdManager2 m_bm = FindObjectOfType<BirdManager2>();
+        m_bm.m_paused = false;
+        Time.timeScale = 1;
+    }
+
+	public void _Home()
+	{
+        Time.timeScale = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
 
 	void Update()
 	{
