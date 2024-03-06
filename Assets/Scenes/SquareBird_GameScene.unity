@@ -16105,7 +16105,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16435,7 +16435,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16727,7 +16727,7 @@ MonoBehaviour:
   - 
   - 
   - 
-  char_pricing: 32000000320000003200000032000000320000003200000032000000320000003200000032000000320000003200000032000000320000003200000032000000320000003200000032000000320000003200000032000000
+  char_pricing: f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000
   notifymenu: {fileID: 51}
   newbird: {fileID: 580}
   msgbox: {fileID: 13}
@@ -16766,7 +16766,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16973,7 +16973,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17033,7 +17033,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17119,7 +17119,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17267,7 +17267,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17772,7 +17772,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17804,7 +17804,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17868,7 +17868,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18335,7 +18335,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18399,7 +18399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18796,7 +18796,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19052,7 +19052,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19140,7 +19140,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19364,7 +19364,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19775,7 +19775,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19977,7 +19977,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20317,7 +20317,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20431,7 +20431,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20687,7 +20687,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20982,7 +20982,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!114 &609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21234,7 +21234,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 500
 --- !u!29 &616
 OcclusionCullingSettings:
   m_ObjectHideFlags: 0
