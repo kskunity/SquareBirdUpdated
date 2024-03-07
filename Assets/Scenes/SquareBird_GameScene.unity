@@ -20010,6 +20010,7 @@ MonoBehaviour:
   Star: {fileID: 5194046728480170140, guid: 2bf4636eb8922ae4c9ac035a80eb31cf, type: 3}
   spoint: {fileID: 55}
   gradientbg: {fileID: 82}
+  m_test_level_no: 100
   levelcodes: []
   uihandler: {fileID: 509}
   notifymenu: {fileID: 51}

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_land_id: 
-  landwidth: 8
+  landwidth: 10
   offset: 0
   nextlands:
   - {fileID: 2656921748105331342}

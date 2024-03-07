@@ -25,6 +25,8 @@ public class LevelHandler2 : MonoBehaviour
     public GameObject gradientbg;
 
     private int levelno;
+    [Space]
+    public int m_test_level_no;
 
     private int prevlevelno;
 
@@ -79,6 +81,9 @@ public class LevelHandler2 : MonoBehaviour
         Application.targetFrameRate = 30;
 
         levelno = PlayerPrefs.GetInt("squarebird_levelno");
+        levelno = m_test_level_no;
+#if UNITY_EDITOR
+#endif
         levelcodes = PlayerPrefs.GetString("squarebird_levelcodex").Split(';');
 
         Debug.Log(PlayerPrefs.GetString("squarebird_levelcodex"));
@@ -309,7 +314,7 @@ public class LevelHandler2 : MonoBehaviour
 #if UNITY_EDITOR
         if (m_test)
         {
-            return m_genratedObjects[m_test_no];
+            return m_newland_objects[m_test_no];
         }
 #endif
 

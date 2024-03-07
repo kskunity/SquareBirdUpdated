@@ -5860,7 +5860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_land_id: 
-  landwidth: 6
+  landwidth: 8
   offset: 0
   nextlands:
   - {fileID: 3801216169941408797}
