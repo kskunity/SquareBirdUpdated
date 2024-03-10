@@ -17464,6 +17464,7 @@ MonoBehaviour:
   m_pause_panel: {fileID: 249668549}
   m_text: {fileID: 5631022}
   m_paush_button: {fileID: 887186707}
+  m_music_on_off_text: {fileID: 0}
 --- !u!114 &510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20049,49 +20050,9 @@ MonoBehaviour:
   - {r: 0.7372549, g: 1, b: 0.9882353, a: 0.5019608}
   - {r: 0, g: 0.5019608, b: 1, a: 0.5019608}
   m_test_no: 0
-  m_newland_objects:
-  - {fileID: 4296326883099491352, guid: c809c35c8b5f87048a10b92460d9df83, type: 3}
-  - {fileID: 6619235605348054558, guid: aca429469177a5b479ceb7255e1f0b48, type: 3}
-  - {fileID: 5211695641695968447, guid: fdd47392b22222545961b83ca6eec73d, type: 3}
-  - {fileID: 8536946266116679486, guid: 34b2b8c4831d387439620171b6192edb, type: 3}
-  - {fileID: 7415344019079588056, guid: 028b3a9f81893aa42a611271e3a2bc30, type: 3}
-  - {fileID: 8830351132964172022, guid: d1d0bdab2118eac4c921a8fdd7d3f904, type: 3}
-  - {fileID: 4614294377905751394, guid: 6d20472b01af7e74aa8c16906cd3cfb0, type: 3}
-  - {fileID: 1986580395549825347, guid: b56b0c388a66c514ea7fdc497438e801, type: 3}
-  - {fileID: 6105350475267650061, guid: 6c9914ffdac9ef04bab4c284ee7ac6d3, type: 3}
-  - {fileID: 4675007227636060746, guid: 5205e4eea7938384e81c7a6693aae86e, type: 3}
-  - {fileID: 7619690968292594665, guid: 45a5c037422a3314db6c31c8efeb4a55, type: 3}
-  - {fileID: 3554612516243020736, guid: 71a6b30736156d64994ff5d7a740c39e, type: 3}
-  - {fileID: 7045843119483527079, guid: ea5bd0818b2217b42979e64516a542b3, type: 3}
-  - {fileID: 2075236105531156340, guid: 0a790ccf22e38ca4ea7bb9881e4d39db, type: 3}
-  - {fileID: 2442622485828701946, guid: 28a597ff5718c144695aa50b996b8f1a, type: 3}
-  - {fileID: 8711967036875012208, guid: 0313147b8ea54bd49a818fd80c519033, type: 3}
-  - {fileID: 9006724627554209901, guid: a5671b06cf9879a488f8ab6332d4c8d5, type: 3}
-  - {fileID: 3801216169941408797, guid: 2b1fca42da1ad964ab23e327553b2bb9, type: 3}
-  - {fileID: 2538073905515456464, guid: 4cc0280cf0b18e94fb4045eb4e43df69, type: 3}
-  - {fileID: 215412960750091673, guid: c93f2c8644ef7eb48a959f64e9ca5458, type: 3}
-  - {fileID: 6526452606496442798, guid: 21d41947fa423f24d87f12f5707cac25, type: 3}
-  - {fileID: 7866075173996182423, guid: 608d258cfddd1b14ebdad3b7a2e5da0b, type: 3}
-  - {fileID: 3459507472499803902, guid: cfd3e8d7721b2fc4fafe3c55fac92ad6, type: 3}
-  - {fileID: 1101099147729617404, guid: 7d2dd0c2b5672cd4ab4c85900938e339, type: 3}
-  - {fileID: 4110715120739925465, guid: 2e6b15e47b1a8cb41b02c3caedef737c, type: 3}
-  - {fileID: 6117303198008914038, guid: 85b7dc1e4fcbd384d8e95f4d69b179bc, type: 3}
-  - {fileID: 2656921748105331342, guid: 3374626522a8aed4787db3f0a026cf3e, type: 3}
-  - {fileID: 4296884999541552642, guid: 0ad492ff271cfb6499bc54eed49d3111, type: 3}
-  - {fileID: 150178040177609996, guid: 93f1a2b915e57054ea40f16a6302572f, type: 3}
-  - {fileID: 1431621616585517622, guid: 440596c33d410a149bc3dbdfd107b7e8, type: 3}
-  - {fileID: 1544627207284967045, guid: dba6738d47612c7448264502e80052b7, type: 3}
-  - {fileID: 2707717468093694756, guid: 8fb4b68ef4ad17141ade757d433ef4f2, type: 3}
-  - {fileID: 674584296011583145, guid: d5452a200fb87c348a898f923d245f28, type: 3}
-  - {fileID: 157385682017989848, guid: 46f6eae2b6c75174588e163288566911, type: 3}
-  - {fileID: 2457548551505346857, guid: 90487788efed06a47bc4f6335e07da27, type: 3}
-  - {fileID: 2156665233371836858, guid: 590cb5cc3645a8f4c961cfc70d9d8551, type: 3}
-  - {fileID: 4182909672658690509, guid: 5ae27d2aca97bdc4ab66d2f94feeb64e, type: 3}
-  - {fileID: 8676622023201409665, guid: 7e25751af0708444894d41a2b5687864, type: 3}
-  - {fileID: 5942726755133103313, guid: 5dadb1f1f9022434abfbce0025791a5b, type: 3}
-  - {fileID: 2465465854518695577, guid: cb541088992b4e242810170e97015930, type: 3}
+  m_newland_objects: []
   m_test: 1
-  m_sequence: 0
+  m_sequence: 1
   m_genratedObjects: []
   m_land_count_test: 100
 --- !u!114 &586
