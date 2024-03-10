@@ -70,6 +70,13 @@ public class UIHandler : MonoBehaviour
 	public Text m_text;
 	[Space]
 	public Button m_paush_button;
+	[Space]
+	public Text m_music_on_off_text;
+
+
+	private string m_on_string= "MUSIC - ON";
+	private string m_off_string= "MUSIC - OFF";
+
     public static UIHandler instance;
 
 	private int m_frame;
@@ -130,13 +137,27 @@ public class UIHandler : MonoBehaviour
 
         Debug.Log(PlayerPrefs.GetString("highscore"));
 
-	}
+      
+
+    }
 
 	public void _Paush()
 	{
 		m_paush_button.interactable = false;
         BirdManager2 m_bm=FindObjectOfType<BirdManager2>();
         m_bm.m_paused = true;
+
+
+        if (PlayerPrefs.GetInt("squarebird_ismusic") == 0)
+        {
+            Debug.Log("Music ON");
+            m_music_on_off_text.text = m_on_string;
+        }
+        else
+        {
+            Debug.Log("Music OFF");
+            m_music_on_off_text.text = m_off_string;
+        }
 
         m_pause_panel.SetActive(true);
         Time.timeScale = 0;
@@ -170,6 +191,24 @@ public class UIHandler : MonoBehaviour
         Time.timeScale = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
+
+	public void _MusicOnOff()
+	{
+        if (PlayerPrefs.GetInt("squarebird_ismusic") == 0)
+        {
+            PlayerPrefs.SetInt("squarebird_ismusic", 1);
+            //musicoff.SetActive(true);
+			m_music_on_off_text.text = m_off_string;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("squarebird_ismusic", 0);
+            //musicoff.SetActive(false);
+			m_music_on_off_text.text = m_on_string;
+        }
+        FindObjectOfType<BirdManager2>().UpdateMusicSetting();
+        //GameObject.Find("BirdManager").GetComponent<BirdManager2>().UpdateMusicSetting();
+    }
 
 	void Update()
 	{

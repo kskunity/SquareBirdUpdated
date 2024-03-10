@@ -45,8 +45,8 @@ public class PlatformAnimation : MonoBehaviour
             case _Effects.m_a:
                 m_seq = DOTween.Sequence();
                 m_seq.Append(transform.DOLocalMoveY(m_last_pos.y, m_time)).SetEase(m_ease);
-                m_seq.Append(transform.DOLocalMoveY(m_start_pos.y, m_time)).SetEase(m_ease);
-                m_seq.SetLoops(-1);
+                //m_seq.Append(transform.DOLocalMoveY(m_start_pos.y, m_time)).SetEase(m_ease);
+                m_seq.SetLoops(1);
                 break;
             case _Effects.m_b:
                 m_seq = DOTween.Sequence();

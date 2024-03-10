@@ -86,12 +86,16 @@ public class UIHandlerHome : MonoBehaviour
             msgbox.SetActive(false);
         }
         musicoff.SetActive(false);
+
+
         if (PlayerPrefs.GetInt("squarebird_ismusic") == 0)
         {
+            Debug.Log("Music ON");
             musicoff.SetActive(false);
         }
         else
         {
+            Debug.Log("Music OFF");
             musicoff.SetActive(true);
         }
         vibrateoff.SetActive(false);
@@ -188,11 +192,14 @@ public class UIHandlerHome : MonoBehaviour
 
     public void _Quite()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-    Application.Quit();
-#endif
+
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //#if UNITY_EDITOR
+        //        UnityEditor.EditorApplication.isPlaying = false;
+        //#else
+        //    Application.Quit();
+        //#endif
     }
 
 

@@ -47,7 +47,6 @@ public class BirdFrontCollider : MonoBehaviour
 
     void _MakeDead()
     {
-        return;
         bird.GetComponent<BirdBehaviour>().BirdDead();
         once = false;
     }

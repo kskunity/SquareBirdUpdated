@@ -55,8 +55,11 @@ public class LevelHandler2 : MonoBehaviour
     public List<GameObject> m_newland_objects;
     [Space]
     public bool m_test;
+    public bool m_sequence;
     private int m_score;
 
+
+    private int m_cc=1;
     public static LevelHandler2 instance;
 
 
@@ -81,8 +84,8 @@ public class LevelHandler2 : MonoBehaviour
         Application.targetFrameRate = 30;
 
         levelno = PlayerPrefs.GetInt("squarebird_levelno");
-        levelno = m_test_level_no;
 #if UNITY_EDITOR
+        //levelno = m_test_level_no;
 #endif
         levelcodes = PlayerPrefs.GetString("squarebird_levelcodex").Split(';');
 
@@ -229,6 +232,26 @@ public class LevelHandler2 : MonoBehaviour
     private GameObject _GetLandObject(int m_index)
     {
         Debug.Log(m_index);
+
+#if UNITY_EDITOR
+        if (m_test)
+        {
+            if (m_sequence)
+            {
+                if (m_cc == 0)
+                {
+                    m_cc= 1;
+                }
+                else
+                {
+                    m_cc = 0;
+                }
+
+                return m_newland_objects[m_cc];
+            }
+        }
+#endif
+
         return m_newland_objects[m_index];
         //return lands[m_index];
     }
@@ -314,7 +337,20 @@ public class LevelHandler2 : MonoBehaviour
 #if UNITY_EDITOR
         if (m_test)
         {
-            return m_newland_objects[m_test_no];
+            if (m_sequence)
+            {
+                if (m_cc == 0)
+                {
+                    m_cc = 1;
+                }
+                else
+                {
+                    m_cc = 0;
+                }
+
+                return m_newland_objects[m_cc];
+            }
+            return m_newland_objects[Random.Range(0,m_newland_objects.Count)];
         }
 #endif
 
