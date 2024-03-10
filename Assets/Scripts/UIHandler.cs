@@ -74,8 +74,8 @@ public class UIHandler : MonoBehaviour
 	public Text m_music_on_off_text;
 
 
-	private string m_on_string= "MUSIC - ON";
-	private string m_off_string= "MUSIC - OFF";
+	private string m_on_string= "SOUND- ON";
+	private string m_off_string= "SOUND- OFF";
 
     public static UIHandler instance;
 

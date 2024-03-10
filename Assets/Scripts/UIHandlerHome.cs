@@ -32,6 +32,8 @@ public class UIHandlerHome : MonoBehaviour
     public GameObject charmenu;
     [Space]
     public Text m_cointext;
+    [Space]
+    public GameObject m_reset_popup;
 
 
 
@@ -192,14 +194,32 @@ public class UIHandlerHome : MonoBehaviour
 
     public void _Quite()
     {
+        _OpenReset();
 
-        PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //#if UNITY_EDITOR
         //        UnityEditor.EditorApplication.isPlaying = false;
         //#else
         //    Application.Quit();
         //#endif
+    }
+
+    void _OpenReset()
+    {
+        m_reset_popup.SetActive(true);
+    }
+
+    public void _Yes()
+    {
+        PlayerPrefs.SetInt("squarebird_levelno", 1);
+        PlayerPrefs.SetString("squarebird_levelcodex", "0;0");
+        //PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void _CloseReset()
+    {
+        m_reset_popup.SetActive(false);
+
     }
 
 
