@@ -212,6 +212,7 @@ public class UIHandlerHome : MonoBehaviour
     {
         PlayerPrefs.SetInt("squarebird_levelno", 1);
         PlayerPrefs.SetString("squarebird_levelcodex", "0;0");
+        PlayerPrefs.SetInt("squarebird_tmpscore", 0);
         //PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
